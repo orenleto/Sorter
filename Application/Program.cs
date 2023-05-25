@@ -7,7 +7,6 @@ const int MaxWordsCount = 3_000_000;
 
 var fileName = args[0];
 var startedAt = Stopwatch.GetTimestamp();
-
 var blockCount = 0;
 var parallelismDegree = Environment.ProcessorCount;
 
@@ -98,7 +97,7 @@ writer.Complete();
 await Task.WhenAll(sortingTasks);
 await Task.WhenAll(writeTasks);
 
-Console.WriteLine($"ELAPSED ON MAP {totalWords}: {Stopwatch.GetElapsedTime(startSplitProcessTimestamp).TotalMilliseconds:F0}ms");
+Console.WriteLine($"Time Elapsed on Map: {Stopwatch.GetElapsedTime(startSplitProcessTimestamp):c}");
 
 var startMergeProcessTimestamp = Stopwatch.GetTimestamp();
 var wordReaders = new ImprovedWordReader[blockCount];
@@ -131,7 +130,7 @@ while (heap.Count > 0)
     }
 }
 
-Console.WriteLine($"ELAPSED ON REDUCE {mergedWords} WORDS: {Stopwatch.GetElapsedTime(startMergeProcessTimestamp).TotalMilliseconds:F0}ms");
+Console.WriteLine($"Time Elapsed on Reduce:{Stopwatch.GetElapsedTime(startMergeProcessTimestamp):c}");
 for (var i = 0; i < blockCount; ++i)
 {
     wordReaders[i].Dispose();
@@ -141,7 +140,7 @@ for (var i = 0; i < blockCount; ++i)
     File.Delete(metaPath);
 }
 
-Console.WriteLine($"TOTAL ELAPSED {Stopwatch.GetElapsedTime(startedAt).TotalSeconds:F3}sec");
+Console.WriteLine($"Time Elapsed on Sorting: {Stopwatch.GetElapsedTime(startedAt):c}");
 
 readonly struct ImprovedWord : IComparable<ImprovedWord>
 {
@@ -381,7 +380,6 @@ class Sorter
         }
 
         words.Sort();
-        Console.WriteLine($"{job.JobIdentifier} WORDS: {wordIndex}; SORT {Stopwatch.GetElapsedTime(startIterationTimestamp).TotalMilliseconds:F0}ms; ");
         return Task.FromResult(wordIndex);
     }
 }

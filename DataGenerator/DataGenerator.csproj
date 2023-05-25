@@ -7,27 +7,4 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
-    <ItemGroup>
-      <None Remove="Source\chinese.txt" />
-      <Content Include="Source\chinese.txt">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </Content>
-      <None Remove="Source\english.txt" />
-      <Content Include="Source\english.txt">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </Content>
-      <None Remove="Source\german.txt" />
-      <Content Include="Source\german.txt">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </Content>
-      <None Remove="Source\russian.txt" />
-      <Content Include="Source\russian.txt">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </Content>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="obj\Release\net7.0" />
-    </ItemGroup>
-
 </Project>

@@ -19,8 +19,4 @@
       <None Remove="words.txt" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="obj\Release\net7.0" />
-    </ItemGroup>
-
 </Project>

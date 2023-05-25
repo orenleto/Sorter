@@ -30,9 +30,5 @@
     <ItemGroup>
       <ProjectReference Include="..\Algorithms\Algorithms.csproj" />
     </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="obj\Release\net7.0" />
-    </ItemGroup>
-
+    
 </Project>
